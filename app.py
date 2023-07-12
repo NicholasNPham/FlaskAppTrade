@@ -10,6 +10,7 @@ db = SQLAlchemy()
 DB_NAME = 'database.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 app.config['SECRET_KEY'] = 'secret'
+db.init_app(app)
 
 class User(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
