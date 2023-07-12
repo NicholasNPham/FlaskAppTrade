@@ -18,6 +18,10 @@ def register():
 def info():
 	return render_template('info.html')
 
+@app.route('/analysis')
+def analysis():
+	return render_template('analysis.html')
+
 if __name__ == '__main__':
 	app.run(debug=True)
 
