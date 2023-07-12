@@ -3,14 +3,20 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 
 app = Flask(__name__)
-db = SQLAlchemy(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
+# Dababase General Setup
+
+db = SQLAlchemy()
+DB_NAME = 'database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 app.config['SECRET_KEY'] = 'secret'
 
 class User(db.Model, UserMixin):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(20), nullable=False)
 	password = db.Column(db.String(80), nullable=False)
+
+# Routes
 
 @app.route('/')
 def home():
@@ -31,6 +37,8 @@ def info():
 @app.route('/analysis')
 def analysis():
 	return render_template('analysis.html')
+
+# Run Method
 
 if __name__ == '__main__':
 	app.run(debug=True)
