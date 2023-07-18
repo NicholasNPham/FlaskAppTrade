@@ -22,7 +22,7 @@ class User(db.Model, UserMixin):
 	username = db.Column(db.String(20), nullable=False, unique=True)
 	password = db.Column(db.String(80), nullable=False)
 
-class RegisterForm(flaskForm):
+class RegisterForm(FlaskForm):
 	
 	# Username
 	username = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
@@ -41,7 +41,7 @@ class RegisterForm(flaskForm):
 		if existing_user_username:
 			raise ValidationError("That Username Already Exists.")
 
-class LoginForm(flaskForm):
+class LoginForm(FlaskForm):
 	
 	# Username
 	username = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
