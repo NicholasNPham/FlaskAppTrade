@@ -1,6 +1,9 @@
 from flask import Flask, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
+from flask_wtf import wtforms
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import InputRequired, Length, ValidationError
 
 app = Flask(__name__)
 
