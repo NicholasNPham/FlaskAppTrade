@@ -41,6 +41,18 @@ class RegisterForm(flaskForm):
 		if existing_user_username:
 			raise ValidationError("That Username Already Exists.")
 
+class LoginForm(flaskForm):
+	
+	# Username
+	username = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
+			render_kw = {'placeholder': 'Username'})
+	
+	# Password
+	password = PasswordField(validators = [InputRequired(), Length(min = 4, max = 20)],
+			render_kw = {'placeholder': 'Password'})
+	
+	# Submit Button
+	submit = SubmitField('Login')
 
 # Routes
 
