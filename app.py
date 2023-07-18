@@ -35,6 +35,12 @@ class RegisterForm(flaskForm):
 	# Submit Button
 	submit = SubmitField('Register')
 
+	def validate_username(self, username):
+		existing_user_username = User.query.filter_by(
+			username = username.data).first()
+		if existing_user_username:
+			raise ValidationError("That Username Already Exists.")
+
 
 # Routes
 
