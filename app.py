@@ -7,7 +7,7 @@ from wtforms.validators import InputRequired, Length, ValidationError
 
 app = Flask(__name__)
 
-# Dababase General Setup
+# Database General Setup
 
 db = SQLAlchemy()
 DB_NAME = 'database.db'
@@ -16,9 +16,25 @@ app.config['SECRET_KEY'] = 'secret'
 db.init_app(app)
 
 class User(db.Model, UserMixin):
+	
+	# General Database Appending Method
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(20), nullable=False, unique=True)
 	password = db.Column(db.String(80), nullable=False)
+
+class RegisterForm(flaskForm):
+	
+	# Username
+	username = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
+			render_kw = {'placeholder': 'Username'})
+	
+	# Password
+	password = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
+			render_kw = {'placeholder': 'Password'})
+	
+	# Submit Button
+	submit = SubmitField('Register')
+
 
 # Routes
 
