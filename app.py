@@ -29,7 +29,7 @@ class RegisterForm(flaskForm):
 			render_kw = {'placeholder': 'Username'})
 	
 	# Password
-	password = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
+	password = PasswordField(validators = [InputRequired(), Length(min = 4, max = 20)],
 			render_kw = {'placeholder': 'Password'})
 	
 	# Submit Button
