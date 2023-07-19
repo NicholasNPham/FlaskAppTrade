@@ -7,6 +7,14 @@
 </head>
 <body>
     <h1>Analysis Page</h1>
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        {{ form.screener }}
+        {{ form.exchange }}
+        {{ form.submit }}
+    </form>
+    
     <a href="{{url_for('info')}}">Need to Know what you need? Info Here</a><br>
 </body>
 </html>
