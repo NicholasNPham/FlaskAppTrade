@@ -54,6 +54,19 @@ class LoginForm(FlaskForm):
 	# Submit Button
 	submit = SubmitField('Login')
 
+class AnalysisForm(FlaskForm):
+
+	# Screener
+	screener = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
+			render_kw = {'placeholder': 'Screener'})
+	
+	# Exchange
+	exchange = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
+			render_kw = {'placeholder': 'Exchange'})
+	
+	# Submit Button
+	submit = SubmitField('Get Analysis')
+
 # Routes
 
 @app.route('/')
@@ -74,9 +87,10 @@ def register():
 def info():
 	return render_template('info.html')
 
-@app.route('/analysis')
+@app.route('/analysis', methods = ['GET', 'POST'])
 def analysis():
-	return render_template('analysis.html')
+	form = AnalysisForm()
+	return render_template('analysis.html', form = form)
 
 # Run Method
 
