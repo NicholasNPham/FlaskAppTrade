@@ -10,11 +10,13 @@
 
     <form method="POST" action="">
         {{ form.hidden_tag() }}
-        {{ form.screener }}
+        {{ form.screener }} 
         {{ form.exchange }}
+        {{ form.symbol }}
+        {{ form.interval }}
         {{ form.submit }}
     </form>
-    
+
     <a href="{{url_for('info')}}">Need to Know what you need? Info Here</a><br>
 </body>
 </html>
