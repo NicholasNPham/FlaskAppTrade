@@ -56,13 +56,21 @@ class LoginForm(FlaskForm):
 
 class AnalysisForm(FlaskForm):
 
-	# Screener
+	# Symbol
+	symbol = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
+			render_kw = {'placeholder': 'Symbol'})
+	
+# Screener
 	screener = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
 			render_kw = {'placeholder': 'Screener'})
 	
 	# Exchange
 	exchange = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
 			render_kw = {'placeholder': 'Exchange'})
+	
+	# Interval
+	interval = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
+			render_kw = {'placeholder': 'Interval'})
 	
 	# Submit Button
 	submit = SubmitField('Get Analysis')
@@ -79,7 +87,7 @@ def login():
 	return render_template('login.html', form = form)
 
 @app.route('/register', methods = ['GET', 'POST'])
-def register():
+def register():  
 	form = RegisterForm()
 	return render_template('register.html', form = form)
 
