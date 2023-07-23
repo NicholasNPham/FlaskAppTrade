@@ -59,7 +59,7 @@ class AnalysisForm(FlaskForm):
 	# Symbol
 	symbol = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
 			render_kw = {'placeholder': 'Symbol'})
-	
+
 # Screener
 	screener = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
 			render_kw = {'placeholder': 'Screener'})
@@ -69,7 +69,7 @@ class AnalysisForm(FlaskForm):
 			render_kw = {'placeholder': 'Exchange'})
 	
 	# Interval
-	interval = StringField(validators = [InputRequired(), Length(min = 4, max = 20)],
+	interval = StringField(validators = [InputRequired(), Length(min = 3, max = 20)],
 			render_kw = {'placeholder': 'Interval'})
 	
 	# Submit Button
