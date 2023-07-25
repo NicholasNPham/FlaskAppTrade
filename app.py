@@ -91,6 +91,13 @@ def login():
 @app.route('/register', methods = ['GET', 'POST'])
 def register():  
 	form = RegisterForm()
+
+	if form.validate_on_submit():
+		hashed_password = bcrypt.generate_password_hash(form.password.data)
+		new_user = User(form.username.data, password=hashed_password)
+		db.session.add(new_user)
+		db.session.commit()
+
 	return render_template('register.html', form = form)
 
 @app.route('/info')
