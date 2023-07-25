@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
+from flask_bcrypt import bcrypt
 
 app = Flask(__name__)
 
@@ -11,6 +12,7 @@ app = Flask(__name__)
 
 db = SQLAlchemy()
 DB_NAME = 'database.db'
+bcrypt = bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 app.config['SECRET_KEY'] = 'secret'
 db.init_app(app)
